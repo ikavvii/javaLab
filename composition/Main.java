@@ -1,4 +1,3 @@
-// --- THE COMPONENTS (Remain the same) ---
 class Battery {
     int capacity;
     Battery(int capacity) { this.capacity = capacity; }
