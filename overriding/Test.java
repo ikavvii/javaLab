@@ -21,6 +21,7 @@ class B extends A {
     }
     B(String arg) {
         super(arg); 
+        // super();
         // set(arg);
     }
 }
@@ -29,7 +30,7 @@ public class Test {
     public static void main(String[] args) {
         A a = new A("Object 1");
         a.disp();
-        B b = new B("Object 2");
+        A b = new B("Object 2");
         b.disp();
     }
 }
