@@ -19,12 +19,15 @@ public class BrowserApp {
         do {
             System.out.println("\n===== Browser Menu =====");
             System.out.println("Current Page: " + browser.getCurrent());
-            System.out.println("1. Visit New Page");
-            System.out.println("2. Go Back");
+            System.out.println("1. Visit New Page (Push)");
+            System.out.println("2. Go Back (Pop)");
             System.out.println("3. Go Forward");
-            System.out.println("4. Peek Current");
-            System.out.println("5. Exit");
-
+            System.out.println("4. Peek Current Page");
+            System.out.println("5. Back Stack Size");
+            System.out.println("6. Forward Stack Size");
+            System.out.println("7. Show Back History");
+            System.out.println("8. Show Forward History");
+            System.out.println("9. Exit");
             status.setUserTyping(true);
             System.out.print("Enter choice: ");
             choice = sc.nextInt();
@@ -32,13 +35,13 @@ public class BrowserApp {
             status.setUserTyping(false);
 
             switch (choice) {
-
+            
                 case 1:
                     System.out.print("Enter page: ");
                     String page = sc.nextLine();
                     browser.visit(page);
                     break;
-
+            
                 case 2:
                     if (browser.goBack() != null) {
                         System.out.println("Went back to: " + browser.getCurrent());
@@ -46,7 +49,7 @@ public class BrowserApp {
                         System.out.println("No back history.");
                     }
                     break;
-
+            
                 case 3:
                     if (browser.goForward() != null) {
                         System.out.println("Went forward to: " + browser.getCurrent());
@@ -54,20 +57,50 @@ public class BrowserApp {
                         System.out.println("No forward history.");
                     }
                     break;
-
+            
                 case 4:
-                    System.out.println("Current: " + browser.getCurrent());
+                    System.out.println("Current Page: " + browser.getCurrent());
                     break;
-
+            
                 case 5:
+                    System.out.println("Back Stack Size: " + browser.backSize());
+                    break;
+            
+                case 6:
+                    System.out.println("Forward Stack Size: " + browser.forwardSize());
+                    break;
+            
+                case 7:
+                    System.out.println("Back History:");
+                    if (browser.getBackStack().isEmpty()) {
+                        System.out.println("Empty");
+                    } else {
+                        for (int i = browser.getBackStack().size() - 1; i >= 0; i--) {
+                            System.out.println(browser.getBackStack().get(i));
+                        }
+                    }
+                    break;
+            
+                case 8:
+                    System.out.println("Forward History:");
+                    if (browser.getForwardStack().isEmpty()) {
+                        System.out.println("Empty");
+                    } else {
+                        for (int i = browser.getForwardStack().size() - 1; i >= 0; i--) {
+                            System.out.println(browser.getForwardStack().get(i));
+                        }
+                    }
+                    break;
+            
+                case 9:
                     System.out.println("Exiting...");
                     break;
-
+            
                 default:
                     System.out.println("Invalid choice!");
             }
 
-        } while (choice != 5);
+        } while (choice != 9);
 
         sc.close();
     }
