@@ -1,0 +1,26 @@
+Compile:
+javac NativeDemo.java
+
+Create headers:
+javac -h . NativeDemo.java
+
+Create native file using header:
+
+Create shared library:
+
+Windows
+
+gcc -shared -o MyNativeLib.dll -I"$env:JAVA_HOME\include" -I"$env:JAVA_HOME\include\win32" file.c
+
+java "-Djava.library.path=." NativeDemo
+
+java --enable-native-access=ALL-UNNAMED "-Djava.library.path=." NativeDemo
+
+java --enable-native-access=ALL-UNNAMED NativeDemo
+
+
+Linux:
+
+gcc -shared -fPIC -o libMyNativeLib.so -I"$JAVA_HOME/include" -I"$JAVA_HOME/include/linux" file.c
+
+java -Djava.library.path=. NativeDemo
