@@ -1,0 +1,8 @@
+--- FILES ANALYSIS REPORT ---
+Total Lines : 7
+Total Words: 8
+Total Characters: 42
+Uppercase Letters: 4
+Lowercase Letters: 17
+Vowels: 7
+Digits: 9
